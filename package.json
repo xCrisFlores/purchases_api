@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "mongo-migrate": "^2.0.2",
+    "mongoose": "^8.8.4"
+  },
+  "name": "express_server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "run test"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
