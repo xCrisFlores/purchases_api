@@ -41,6 +41,19 @@ class UserService {
       throw new Error(error.message);
     }
   }
+
+  static async login(data) {
+    try {
+      const user = await User.findOne({mail: data.mail, password: data.password});
+      if(user){
+        return user._id;
+      }
+
+    } catch (error) {
+      return error;
+    }
+  }
+
 }
 
 module.exports = UserService;

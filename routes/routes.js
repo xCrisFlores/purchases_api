@@ -8,6 +8,7 @@ router.get('/users', UserController.get_users);
 router.get('/users/:_id', UserController.get_user_by_name);
 router.put('/users/:_id', UserController.update_user);
 router.delete('/users/:_id', UserController.delete_user);
+router.post('/users/login', UserController.login); 
 
 router.post('/purchases', PurchaseController.create_purchase);  
 router.get('/purchases', PurchaseController.get_purchases);

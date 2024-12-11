@@ -56,6 +56,17 @@ class UserController {
       res.status(400).json({ error: err.message });
     }
   }
+
+  static async login(req, res) {
+    try {
+      const { mail, password } = req.body;
+      const _id = await UserService.login({ mail, password });
+      res.status(200).json(_id);
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  }
+
 }
 
 module.exports = UserController;
