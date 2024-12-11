@@ -18,25 +18,25 @@ class PurchaseService {
     }
   }
 
-  static async get_by_user(name) {
+  static async get_by_user(_id) {
     try {
-      return await Purchase.find({ buyer: name }).populate('buyer', 'name mail');
+      return await Purchase.find({ buyer: _id }).populate('buyer', 'name mail');
     } catch (error) {
       throw new Error(error.message);
     }
   }
 
-  static async update_resource(name, data) {
+  static async update_resource(_id, data) {
     try {
-      return await Purchase.findOneAndUpdate({ buyer: name }, data, { new: true });
+      return await Purchase.findOneAndUpdate({ buyer: _id }, data, { new: true });
     } catch (error) {
       throw new Error(error.message);
     }
   }
 
-  static async delete_resource(name) {
+  static async delete_resource(_id) {
     try {
-      return await Purchase.findOneAndDelete({ buyer: name });
+      return await Purchase.findOneAndDelete({ buyer: _id });
     } catch (error) {
       throw new Error(error.message);
     }

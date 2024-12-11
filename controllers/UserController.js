@@ -23,7 +23,7 @@ class UserController {
 
   static async get_user_by_name(req, res) {
     try {
-      const user = await UserService.get_by_name(req.params.name);
+      const user = await UserService.get_by_name(req.params._id);
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
@@ -35,7 +35,7 @@ class UserController {
 
   static async update_user(req, res) {
     try {
-      const user = await UserService.update_resource(req.params.name, req.body);
+      const user = await UserService.update_resource(req.params._id, req.body);
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
@@ -47,7 +47,7 @@ class UserController {
 
   static async delete_user(req, res) {
     try {
-      const user = await UserService.delete_resource(req.params.name);
+      const user = await UserService.delete_resource(req.params._id);
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }

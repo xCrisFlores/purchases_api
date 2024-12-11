@@ -18,25 +18,25 @@ class UserService {
     }
   }
 
-  static async get_by_name(name) {
+  static async get_by_name(_id) {
     try {
-      return await User.findOne(name);
+      return await User.find({_id: _id});
     } catch (error) {
       throw new Error(error.message);
     }
   }
 
-  static async update_resource(name, data) {
+  static async update_resource(_id, data) {
     try {
-      return await User.findOneAndUpdate(name, data, { new: true });
+      return await User.findOneAndUpdate(_id, data, { new: true });
     } catch (error) {
       throw new Error(error.message);
     }
   }
 
-  static async delete_resource(name) {
+  static async delete_resource(_id) {
     try {
-      return await User.findOneAndDelete(name);
+      return await User.findOneAndDelete(_id);
     } catch (error) {
       throw new Error(error.message);
     }

@@ -20,9 +20,9 @@ class PurchaseController {
     }
   }
 
-  static async get_pruchases_for_user(req, res) {
+  static async get_purchases_for_user(req, res) {
     try {
-      const user = await PurchaseService.get_pruchases_for_user(req.params.name);
+      const user = await PurchaseService.get_by_user(req.params._id);
       if (!user) {
         return res.status(404).json({ message: 'Purchases not found' });
       }
@@ -34,7 +34,7 @@ class PurchaseController {
 
   static async update_purchases(req, res) {
     try {
-      const user = await PurchaseService.update_resource(req.params.name, req.body);
+      const user = await PurchaseService.update_resource(req.params._id, req.body);
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
@@ -46,7 +46,7 @@ class PurchaseController {
 
   static async delete_purchase(req, res) {
     try {
-      const user = await PurchaseService.delete_resource(req.params.name);
+      const user = await PurchaseService.delete_resource(req.params._id);
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
