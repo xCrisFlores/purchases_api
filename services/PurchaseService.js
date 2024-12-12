@@ -26,9 +26,18 @@ class PurchaseService {
     }
   }
 
-  static async update_resource(_id, data) {
+  static async update_resource(_id, amount, date, buyer) {
     try {
-      return await Purchase.findOneAndUpdate({ buyer: _id }, data, { new: true });
+     
+      let updatedData = {
+        amount: amount,
+        date: date,
+        buyer: buyer
+      };
+
+      console.log(updatedData);
+
+      return await Purchase.findOneAndUpdate({ _id: _id }, updatedData, { new: true });
     } catch (error) {
       throw new Error(error.message);
     }
@@ -36,7 +45,7 @@ class PurchaseService {
 
   static async delete_resource(_id) {
     try {
-      return await Purchase.findOneAndDelete({ buyer: _id });
+      return await Purchase.findOneAndDelete({ _id: _id });
     } catch (error) {
       throw new Error(error.message);
     }

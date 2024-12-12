@@ -34,9 +34,10 @@ class PurchaseController {
 
   static async update_purchases(req, res) {
     try {
-      const user = await PurchaseService.update_resource(req.params._id, req.body);
+      const { _id, amount, date, buyer } = req.body;
+      const user = await PurchaseService.update_resource(_id, amount, date, buyer);
       if (!user) {
-        return res.status(404).json({ message: 'User not found' });
+        return res.status(404).json({ message: 'Purchase not found' });
       }
       res.status(200).json(user);
     } catch (err) {
@@ -48,7 +49,7 @@ class PurchaseController {
     try {
       const user = await PurchaseService.delete_resource(req.params._id);
       if (!user) {
-        return res.status(404).json({ message: 'User not found' });
+        return res.status(404).json({ message: 'Purchase not found' });
       }
       res.status(200).json({ message: 'Purchase for user deleted' });
     } catch (err) {

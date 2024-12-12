@@ -13,7 +13,7 @@ router.post('/users/login', UserController.login);
 router.post('/purchases', PurchaseController.create_purchase);  
 router.get('/purchases', PurchaseController.get_purchases);
 router.get('/purchases/:_id', PurchaseController.get_purchases_for_user);
-router.put('/purchases/:_id', PurchaseController.update_purchases);
+router.put('/purchases', PurchaseController.update_purchases);
 router.delete('/purchases/:_id', PurchaseController.delete_purchase);
 
 module.exports = router;
